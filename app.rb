@@ -18,7 +18,7 @@ get '/' do
 
   @page_title = "Artist & Designer at Relevance, Inc. in Durham, NC"
   @player = Dribbble::Player.find('michaelparenteau')
-  @shots = @player.shots()
+  @shot = @player.shots.first
 
   haml :index
 

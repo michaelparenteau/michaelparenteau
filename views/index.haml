@@ -10,7 +10,7 @@
   
   .im-also-on
     .six.columns.twitter
-      %a{:href => 'http://twitter.com/michaelparenteau', :target => '_blank'} twitter
+      %a{:href => 'http://twitter.com/michaelparenteau',:target => '_blank'} twitter
       .tweet
         %p= Twitter.user_timeline("parenteau").first.text
     .four.columns.ampersand
@@ -18,11 +18,9 @@
     .six.columns.dribbble
       %a{:href => 'http://dribbble.com/michaelparenteau', :target => '_blank'} dribbble
       .shot
-        - @shots.find(:limit => 1) do |shot|
-          %a{:href => shot.url, :target => '_blank'}
-            = image_tag shot.image_url
+        %a{:href => @shot.url, :target => '_blank'}
+          = image_tag @shot.image_url
     .clear
     
   .sixteen.columns.surfer-and-fish-water
     =image_tag("/images/surfer-and-fish-water.png", :alt => "Cyclops alien on a surfboard chasing 3 flying fish")
-      
