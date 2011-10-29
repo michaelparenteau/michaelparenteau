@@ -4,7 +4,7 @@
     %h2 
       %span I make art, design user interfaces and write some code
     #mountains
-      =image_tag("/images/mountains-and-clouds.png")
+      =image_tag("/images/mountains-and-clouds.png", :alt => "Mountains and clouds")
     %h3 my work often includes aliens surfboards and fish
   .clear
   
@@ -14,7 +14,7 @@
       .tweet
         %p= Twitter.user_timeline("parenteau").first.text
     .four.columns.ampersand
-      =image_tag("/images/ampersand.png")
+      =image_tag("/images/ampersand.png", :alt => "Ampersand (&)")
     .six.columns.dribbble
       %a{:href => '#'}dribbble
       .shot
@@ -24,5 +24,5 @@
     .clear
     
   .sixteen.columns.surfer-and-fish-water
-    =image_tag("/images/surfer-and-fish-water.png")
+    =image_tag("/images/surfer-and-fish-water.png", :alt => "Cyclops alien on a surfboard chasing 3 flying fish")
       
