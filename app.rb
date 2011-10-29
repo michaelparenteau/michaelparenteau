@@ -16,7 +16,7 @@ set :haml, {:format => :html5}
 
 get '/' do
 
-  @page_title = "Artist & Designer in Durham, NC"
+  @page_title = "Artist & Designer at Relevance, Inc. in Durham, NC"
   @player = Dribbble::Player.find('michaelparenteau')
   @shots = @player.shots()
 
