@@ -10,13 +10,13 @@
   
   .im-also-on
     .six.columns.twitter
-      %a{:href => '#'}twitter
+      %a{:href => 'http://twitter.com/michaelparenteau', :target => '_blank'} twitter
       .tweet
         %p= Twitter.user_timeline("parenteau").first.text
     .four.columns.ampersand
       =image_tag("/images/ampersand.png", :alt => "Ampersand (&)")
     .six.columns.dribbble
-      %a{:href => '#'}dribbble
+      %a{:href => 'http://dribbble.com/michaelparenteau', :target => '_blank'} dribbble
       .shot
         - @shots.find(:limit => 1) do |shot|
           %a{:href => shot.url, :target => '_blank'}
