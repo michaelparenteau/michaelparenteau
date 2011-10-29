@@ -12,7 +12,7 @@
     .six.columns.twitter
       %a{:href => 'http://twitter.com/michaelparenteau',:target => '_blank'} twitter
       .tweet
-        %p= Twitter.user_timeline("parenteau").first.text
+        %p= @tweet
     .four.columns.ampersand
       =image_tag("/images/ampersand.png", :alt => "Ampersand (&)")
     .six.columns.dribbble
