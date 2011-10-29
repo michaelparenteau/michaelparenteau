@@ -1,0 +1,59 @@
+#!/bin/sh
+
+function display_usage {
+  local project_name=$1
+  
+  if [ -z $project_name ] ; then
+    echo "Usage: $0 <new project name>"
+    exit 1
+  fi
+}
+
+function check_if_in_git_repo {
+  if [ -d .git/ ]; then
+    echo "Error - you are inside a git repo.  This is almost certainly not where you want to be."
+    exit 1
+  fi
+}
+
+function check_that_directory_does_not_already_exist {
+  local project_name=$1
+
+  if [ -d $project_name ]; then
+    echo "You already have an act named $PROJECT_NAME. Use a different name."
+    exit 1
+  fi
+}
+
+function create_new_project {  
+  git clone git@github.com:michaelparenteau/myway $PROJECT_NAME &&
+  cd $PROJECT_NAME &&
+  rm -rf .git/
+}
+
+function setup_rvmrc {
+  echo "rvm use 1.9.2-p180@$PROJECT_NAME" > .rvmrc &&
+  rvm use 1.9.2-p180 &&
+  rvm gemset create $PROJECT_NAME &&
+  echo "installing needed gems, this may take a while..."
+  gem install bundler --no-rdoc --no-ri &&
+  bundle install
+}
+
+function init_git {
+  git init &&
+  git add . &&
+  git ci -am "first commit"
+}
+
+
+PROJECT_NAME=$1 # First argument passed
+
+display_usage $PROJECT_NAME
+check_if_in_git_repo
+check_that_directory_does_not_already_exist $PROJECT_NAME
+
+create_new_project &&
+setup_rvmrc &&
+init_git &&
+echo "$PROJECT_NAME is ready for the stage, created at `pwd`"

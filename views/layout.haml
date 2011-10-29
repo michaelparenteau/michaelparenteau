@@ -1,0 +1,27 @@
+!!! html
+%html
+  = haml :"partials/_head"
+  %body
+    %header
+    %section
+      =yield
+    %footer.container
+      .sixteen.columns
+        :markdown
+          _I made [this site](/){: .home} using [HAML](http://haml-lang.com)/[SASS](http://sass-lang.com). It is a little [sinatra](http://sinatrarb.com) app started out with [myway](http://github.com/michaelparenteau/myway). Not all of [my work](#){: .work} is like this. Want to know more [about me](#){: .about}? Neato._
+          
+          _Typography credits: [Ranger](http://www.losttype.com/font/?name=ranger), [Titillium](http://www.fontsquirrel.com/fonts/TitilliumText), [Airship](http://www.losttype.com/font/?name=airship), [Mensch](http://www.losttype.com/font/?name=mensch), [Tightrope](http://www.losttype.com/font/?name=tightrope) & [Chunk](http://www.theleagueofmoveabletype.com/fonts/4-chunk). Oh yeah, all of this is open on [github](http://github.com/michaelparenteau/michaelparenteau)... 
+          use whatever you like, just don’t be a douche. Thanks [heroku](http://heroku.com) for 
+          hosting this._
+        
+        .elsewhere
+          %a.twitter{:href => 'http://twitter.com/parenteau', 
+                     :target => '_blank'} twitter
+          %a.dribbble{:href => 'http://dribbble.com/michaelparenteau',
+                      :target => '_blank'} dribbble
+          %a.github{:href => 'http://github.com/michaelparenteau',
+                    :target => '_blank'} github
+        
+            
+    = javascript_script_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"
+    = javascript_script_tag "/js/application.js"

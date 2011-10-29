@@ -1,0 +1,28 @@
+.container.home
+  .sixteen.columns
+    %h1 Michael Parenteau
+    %h2 
+      %span I make art, design user interfaces and write some code
+    #mountains
+      =image_tag("/images/mountains-and-clouds.png")
+    %h3 my work often includes aliens surfboards and fish
+  .clear
+  
+  .im-also-on
+    .six.columns.twitter
+      %a{:href => '#'}twitter
+      .tweet
+        %p= Twitter.user_timeline("parenteau").first.text
+    .four.columns.ampersand
+      =image_tag("/images/ampersand.png")
+    .six.columns.dribbble
+      %a{:href => '#'}dribbble
+      .shot
+        - @shots.find(:limit => 1) do |shot|
+          %a{:href => shot.url, :target => '_blank'}
+            = image_tag shot.image_url
+    .clear
+    
+  .sixteen.columns.surfer-and-fish-water
+    =image_tag("/images/surfer-and-fish-water.png")
+      

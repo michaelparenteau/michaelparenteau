@@ -1,0 +1,236 @@
+/* DO NOT EDIT THE screen.css FILE.
+/* SASS WILL MAKE THAT FOR YOU
+
+// don't forget to change the variables to what you want.
+@import "variables"
+// some mixins have arguments.. make sure you check them out
+@import "mixins"
+// here is the base styles
+@import "reset"
+@import "base"
+@import "lists"
+@import "forms"
+@import "tables"
+@import "grid"
+@import "font-face"
+// start your custom stylesheet here
+  
+
+// Home Page
+
+.home
+  h1
+    color: $orange
+    font-family: ranger
+    font-size: 46px
+    z-index: 200
+    letter-spacing: -1px
+    margin-top: 50px
+    &:before
+      content: ''
+      display: block
+      width: 419px
+      height: 40px
+      background: url(/images/michael-parenteau.png)
+      position: absolute
+      z-index: -1
+      top: 68px
+    
+  h2
+    color: #ccc
+    font-family: titilliumbold
+    font-size: 28px
+    max-width: 400px
+    float: left
+    padding: 0
+    line-height: 40px
+    span
+      background: url(/images/bg/diagonal.png)
+      padding: 3px
+  
+  h3
+    color: $magenta
+    font-family: airship
+    font-size: 43px
+    line-height: 50px
+    letter-spacing: -1px
+    text-align: center
+    padding: 30px 0
+    padding-bottom: 60px
+    background: url(/images/bg/stars-and-yellow-line.png) -5px bottom repeat-x
+    
+  .im-also-on
+    background: url(/images/bg/diagonal.png)
+    position: relative
+    margin-top: 30px
+    border-radius: 8px
+    &:before
+      content: ''
+      background: url(/images/bg/im-also-on.png)
+      width: 214px
+      height: 59px
+      position: absolute
+      top: -15px
+      left: 50%
+      margin-left: -107px
+    .twitter, .dribbble
+      padding: 20px 0
+      a
+        font-family: mensch
+        font-size: 22px
+        padding: 12px 0 9px 0
+        width: 75%
+        display: block
+        margin: 0 auto
+        text-align: center
+        background: rgba(25,25,25,0.3)
+        border-radius: 1em
+        -webkit-transition: all .3s ease-in
+        &:hover
+          text-decoration: none
+          background: rgba(25,25,25,0.5)
+    .twitter
+      a
+        color: $blue
+    .dribbble
+      a
+        color: $pink
+    .tweet, .shot
+      background: rgba(25,25,25,0.5)
+      border: 5px solid rgba(25,25,25,0.25)
+      border-radius: 6px
+      padding: 10px
+      color: #ccc
+      font-family: menlo, monospace, courier, fixed
+      font-size: 13px
+      text-align: center
+      width: 80%
+      margin: 0 auto
+      margin-top: 15px
+      p
+        &:before
+          content: "[~]"
+        &:after
+          content: ''
+          display: inline-block
+          width: 10px
+          height: 16px
+          background: url(/images/bg/cursor.gif)
+          vertical-align: middle
+    .tweet
+      min-height: 185px
+    .shot
+      padding: 0
+      a
+        padding: 0
+        width: auto
+        line-height: 0
+    .ampersand
+      text-align: center
+      padding-top: 110px
+  .surfer-and-fish-water
+    padding: 30px 0 80px 0
+    text-align: center
+    background: url(/images/bg/stars-and-yellow-line.png) -5px 105% repeat-x
+
+footer
+  font-family: titillium
+  text-align: center
+  font-size: 11px
+  color: #ccc
+  p
+    margin-bottom: 0
+    em
+      background: url(/images/bg/diagonal.png)
+      padding: 3px
+    a
+      color: $green
+      &.home
+        color: $blue
+      &.work
+        color: $magenta
+      &.about
+        color: $yellow
+  .elsewhere
+    .twitter, .dribbble, .github
+      display: inline-block
+      text-indent: -999px
+      vertical-align: middle
+      overflow: hidden
+      margin: 20px 5px
+      opacity: .6
+      -webkit-transition: all .3s ease-in
+      &:hover
+        opacity: 1
+    .twitter
+      width: 59px
+      height: 41px
+      background: url(/images/icons/twitter.png)
+    .dribbble
+      width: 48px
+      height: 48px
+      background: url(/images/icons/dribbble.png)
+    .github
+      width: 47px
+      height: 47px
+      background: url(/images/icons/github.png)
+  
+::selection
+  background: rgba(255,255,255,0.1)
+  
+// and enter the media-queries
+
+@media only screen and (max-width: 959px)
+  .home
+    h3
+      font-size: 34px
+      line-height: 50px
+      letter-spacing: -1px
+      text-align: center
+      padding: 30px 0
+      padding-bottom: 60px
+      background: url(/images/bg/stars-and-yellow-line.png) -5px bottom repeat-x
+    .im-also-on
+      .tweet
+        font-size: 11px
+        min-height: 140px
+      .ampersand
+        padding-top: 95px
+@media only screen and (max-width: 767px)
+  .home
+    h1
+      font-size: 36px
+      margin-bottom: 10px
+      line-height: 40px
+      text-align: center
+      &:before
+        display: none
+    h2
+      text-align: center
+    .im-also-on
+      .twitter
+        a
+          margin-top: 40px
+      .tweet
+        min-height: 100%
+      .ampersand
+        padding: 0
+@media only screen and (max-width: 480px)
+  .home
+    h1
+      font-size: 30px
+      margin-top: 25px
+      line-height: 36px
+    h2
+      font-size: 21px
+      line-height: 32px
+    h3
+      font-size: 26px
+      line-height: 32px
+    .im-also-on
+      .ampersand
+        img
+          width: 80px
+    .surfer-and-fish-water
+      padding: 20px 0 40px 0
+      margin-bottom: 10px
