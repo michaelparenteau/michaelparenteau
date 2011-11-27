@@ -2,22 +2,29 @@ require "rubygems"
 require "bundler/setup"
 require "rack"
 require "sinatra"
-require 'sinatra/static_assets'
-require 'swish'
-require 'twitter'
+require "sinatra/static_assets"
+require "swish"
+require "twitter"
+require "active_support/cache"
 
-# FOR BASIC AUTH USE BELOW, REPLACE ['username', 'password'] with actual credentials
-# use Rack::Auth::Basic do |username, password|
-#   [username, password] == ['username', 'password']
-# end
+DefaultCacheExpirationTime = 4.hours
 
 set :haml, {:format => :html5}
+set :cache, ActiveSupport::Cache::MemoryStore.new(:expires_in => DefaultCacheExpirationTime)
 
 get '/' do
   @page_title = "Artist & Designer at Relevance, Inc. in Durham, NC"
-  # @tweet = Twitter.user_timeline("parenteau").first.text
-  @player = Dribbble::Player.find('michaelparenteau')
-  @shot = @player.shots.first
-
+  @tweet = last_tweet
+  @shot = last_shot
   haml :index
+end
+
+def last_shot
+  Dribbble::Player.find('michaelparenteau').shots.first
+end
+
+def last_tweet
+  settings.cache.fetch(:last_tweet) do
+    Twitter.user_timeline("parenteau").first.text
+  end
 end

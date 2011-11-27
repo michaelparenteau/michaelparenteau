@@ -16,15 +16,30 @@ describe "the App" do
     Sinatra::Application
   end
 
+  before do
+    # Don't allow any real http requests -- we don't want Dribble or Twitter
+    # requests happening during test runs
+    FakeWeb.allow_net_connect = false
+  end
+
   it "has a good response" do
+    app.any_instance.stubs(:last_shot).returns(stub_everything("dribble shot"))
+    app.any_instance.stubs(:last_tweet).returns("some tweet")
     get '/'
     last_response.should be_ok
   end
 
-  it "grabs the latest tweet" do
-    foo = mock(:foo => "bar")
-    # app.expects(:last_tweet).returns("this is a tweet!")
+  it "shows friendly error message if tweets can't be loaded" do
+    app.any_instance.stubs(:last_shot).returns(stub_everything("dribble shot"))
+    app.any_instance.expects(:last_tweet).returns(nil)
     get "/"
-    # assert last_response.body.include?("this is a tweet!")
+    last_response.body.should include("Twitter requests are timing out")
+  end
+
+  it "shows the latest tweet" do
+    app.any_instance.stubs(:last_shot).returns(stub_everything("dribble shot"))
+    app.any_instance.expects(:last_tweet).returns("this is a tweet!")
+    get "/"
+    last_response.body.should include("this is a tweet!")
   end
 end
