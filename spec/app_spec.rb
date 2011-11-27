@@ -2,26 +2,27 @@ $LOAD_PATH.unshift File.join(File.dirname(__FILE__), *%w[..])
 Bundler.require(:test)
 ENV['RACK_ENV'] = 'test'
 require 'app'
-require 'test/unit'
+require 'rspec'
 require 'mocha'
 require 'rack/test'
 
-class AppTest < Test::Unit::TestCase
-  include Mocha::API
-  include Rack::Test::Methods
+RSpec.configure do |conf|
+  conf.include Rack::Test::Methods
+  conf.mock_with :mocha
+end
 
+describe "the App" do
   def app
     Sinatra::Application
   end
 
-  def test_good_response
+  it "has a good response" do
     get '/'
-    assert last_response.ok?
+    last_response.should be_ok
   end
 
-  def test_grabs_latest_tweet
+  it "grabs the latest tweet" do
     foo = mock(:foo => "bar")
-    foo.bar
     # app.expects(:last_tweet).returns("this is a tweet!")
     get "/"
     # assert last_response.body.include?("this is a tweet!")
