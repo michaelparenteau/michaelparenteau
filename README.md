@@ -10,9 +10,9 @@ Simple spec suite using RSpec/Mocha can be run via:
 
     rake # the default task runs the whole suite
 
-Or
+Or for automatic test runs while developing:
 
-    bundle exec rspec
+    bundle exec guard
 
 ## Tech Used:
 
