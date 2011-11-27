@@ -25,6 +25,12 @@ end
 
 def last_tweet
   settings.cache.fetch(:last_tweet) do
-    Twitter.user_timeline("parenteau").first.text
+    begin
+      Twitter.user_timeline("parenteau").first.text
+    rescue => e
+      $stderr.puts "Could not retrieve latest tweet!"
+      $stderr.puts e
+      nil
+    end
   end
 end

@@ -36,6 +36,13 @@ describe "the App" do
     last_response.body.should include("Twitter requests are timing out")
   end
 
+  it "shows friendly error message if twitter raises an exception" do
+    app.any_instance.stubs(:last_shot).returns(stub_everything("dribble shot"))
+    Twitter.expects(:user_timeline).raises(RuntimeError)
+    get "/"
+    last_response.body.should include("Twitter requests are timing out")
+  end
+
   it "shows the latest tweet" do
     app.any_instance.stubs(:last_shot).returns(stub_everything("dribble shot"))
     app.any_instance.expects(:last_tweet).returns("this is a tweet!")
