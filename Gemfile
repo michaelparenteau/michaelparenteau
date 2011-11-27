@@ -7,3 +7,8 @@ gem "maruku"
 gem "swish"
 gem "twitter"
 gem "heroku"
+
+group :test do
+  gem "rack-test"
+  gem "mocha"
+end
