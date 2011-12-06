@@ -4,16 +4,6 @@
 
 This is my playground. I will have a place to show my artwork, some of my user interface design and I will also start making some poster-like blog posts. I had a lot of fun making all of this so far and plan on continuing the theme. All art, design and development was done by me. You can see it all here, even the PSD. Enjoy
 
-## Running Specs
-
-Simple spec suite using RSpec/Mocha can be run via:
-
-    rake # the default task runs the whole suite
-
-Or for automatic test runs while developing:
-
-    bundle exec guard
-
 ## Tech Used:
 
 * [Sinatra](http://sinatrarb.com) (Ruby and Rubygems)
@@ -36,3 +26,12 @@ Or for automatic test runs while developing:
 
 Feel free to use any of this. Just don't be a doo doo head by taking all the credit. I didn't write all gems and code.. people were kind enough to let me use them. You should follow their awesome example.
 
+## Running Specs
+
+Simple spec suite using RSpec/Mocha can be run via:
+
+    rake # the default task runs the whole suite
+
+Or for automatic test runs while developing:
+
+    bundle exec guard
