@@ -1,6 +1,6 @@
 # michaelparenteau.com
 
-![Surprise visitor](surpise-visitor.gif)
+![Surprise visitor](https://raw.githubusercontent.com/michaelparenteau/michaelparenteau/master/surprise-visitor.gif)
 
 This is my playground. I will have a place to show my artwork, some of my user interface design and I will also start making some poster-like blog posts. I had a lot of fun making all of this so far and plan on continuing the theme. All art, design and development was done by me. You can see it all here, even the PSD. Enjoy
 
